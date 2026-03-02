@@ -32,4 +32,4 @@ La capa de datos (Data Layer) ya se encuentra implementada con:
 
 1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone [https://github.com/TU-USUARIO/GestorAsistencia.git](https://github.com/skodeveloper/GestorAsistencia.git)
+   git clone [https://github.com/skodeveloper/GestorAsistencia.git](https://github.com/skodeveloper/GestorAsistencia.git)
