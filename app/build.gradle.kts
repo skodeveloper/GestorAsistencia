@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinCompose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -47,6 +48,8 @@ android {
     }
 }
 
+val room_version = "2.6.1"
+
 dependencies {
     // Dependencias existentes
     implementation(libs.androidx.core.ktx)
@@ -81,4 +84,9 @@ dependencies {
 
     // ML Kit Barcode Scanning para procesamiento on-device (Offline)
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
+    // Room
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 }
