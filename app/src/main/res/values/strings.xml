@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Llego el Picudazo</string>
+    <string name="texto_picudazo">Llego el picudazo</string>
+    <string name="descripcion_fondo_lejano">Imagen de fondo de una galaxia lejana</string>
+    <string name="descripcion_fondo_medio">Imagen de fondo de una nebulosa</string>
+    <string name="descripcion_fondo_cercano">Imagen de fondo con estrellas cercanas</string>
+</resources>

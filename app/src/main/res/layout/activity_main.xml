@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Capa de fondo más lejana. Se moverá más lento. -->
+    <ImageView
+        android:id="@+id/layerFar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_galaxy_far"
+        android:contentDescription="@string/descripcion_fondo_lejano" />
+
+    <!-- Capa de fondo intermedia (genérica). -->
+    <ImageView
+        android:id="@+id/layerMid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_galaxy_mid"
+        android:contentDescription="@string/descripcion_fondo_medio" />
+
+    <!-- Capa de fondo más cercana (genérica). -->
+    <ImageView
+        android:id="@+id/layerNear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_galaxy_near"
+        android:contentDescription="@string/descripcion_fondo_cercano" />
+
+    <!-- Contenedor para centrar el texto fácilmente. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- El texto principal de la aplicación. -->
+        <TextView
+            android:id="@+id/tvPicudazo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:shadowColor="#80000000"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:text="@string/texto_picudazo"
+            android:textColor="@android:color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Tema principal de la aplicación.
+      Hereda del tema "Fullscreen" para eliminar la barra de estado y la barra de acción.
+    -->
+    <style name="Theme.App.PuntoPartida" parent="Theme.Picudazo.Fullscreen" />
+
+    <!--
+      Estilo para la pantalla completa.
+      Oculta la barra de acción y la barra de estado para una experiencia inmersiva.
+    -->
+    <style name="Theme.Picudazo.Fullscreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>
