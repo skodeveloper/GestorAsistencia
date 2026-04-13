@@ -13,7 +13,6 @@ import com.example.gestorasistencia.data.local.entities.AsistenciaEntity
     exportSchema = false // Desactivado temporalmente para agilizar la compilación en fase de prototipado
 )
 abstract class GestorDatabase : RoomDatabase() {
-    
     // Exposición del DAO para el Repositorio
     abstract fun asistenciaDao(): AsistenciaDao
 
@@ -28,8 +27,9 @@ abstract class GestorDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     GestorDatabase::class.java,
-                    "gestor_asistencia_database"
+                    "GestorAsistencia.db"
                 )
+                    .createFromAsset("databases/GestorAsistencia.db")
                 // Destruye y recrea la DB si se cambia la versión (ideal para desarrollo temprano)
                 .fallbackToDestructiveMigration()
                 .build()
