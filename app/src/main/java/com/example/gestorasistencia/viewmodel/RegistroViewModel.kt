@@ -50,9 +50,14 @@ class RegistroViewModel(application: Application) : AndroidViewModel(application
                 val nuevaAsistencia = AsistenciaEntity(
                     // id es autogenerado
                     // universalId se genera automáticamente en el constructor
-                    alumnoId = matriculaInt,
+                    // alumnoId = matriculaInt,
                     // fecha se genera automáticamente
                     // sincronizado es false por defecto
+                    universalId = UUID.randomUUID().toString(),
+                    matriculaId = matriculaString,
+                    opcionMenu = "Entrada",
+                    claseId = 0,
+                    sincronizado = 0
                 )
                 
                 repository.registrarAsistencia(nuevaAsistencia)
