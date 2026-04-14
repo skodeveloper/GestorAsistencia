@@ -3,6 +3,7 @@ package com.example.gestorasistencia.data.local.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Index //   --  import Index agregado   --  //
 
 @Entity(
     tableName = "carrera",

@@ -22,14 +22,14 @@ interface AsistenciaDao {
      * Obtiene exclusivamente los registros que ocurrieron sin internet
      * y que están esperando ser subidos al servidor.
      */
-    @Query("SELECT * FROM asistencias_table WHERE esta_sincronizado = 0")
+    @Query("SELECT * FROM asistencia WHERE sincronizado = 0")
     suspend fun obtenerAsistenciasPendientes(): List<AsistenciaEntity>
 
     /**
      * Devuelve un flujo reactivo (Flow) con todo el historial, ideal para 
      * mostrar una lista en tiempo real en la UI usando Jetpack Compose.
      */
-    @Query("SELECT * FROM asistencias_table ORDER BY fecha_registro DESC")
+    @Query("SELECT * FROM asistencia ORDER BY fecha DESC, hora DESC")
     fun obtenerTodasLasAsistenciasFlow(): Flow<List<AsistenciaEntity>>
 
     /**
@@ -42,6 +42,26 @@ interface AsistenciaDao {
      * Operación de mantenimiento: borra del teléfono los registros que 
      * ya están respaldados en la nube para ahorrar espacio de almacenamiento.
      */
-    @Query("DELETE FROM asistencias_table WHERE esta_sincronizado = 1")
+    @Query("DELETE FROM asistencia WHERE sincronizado = 1")
     suspend fun limpiarAsistenciasSincronizadas()
+
+    //  --  Registro a base de matricula, día y hora    --  //
+    @Query("""
+        INSERT INTO asistencia (universal_id, matricula_id, opcion_menu, clase_id)
+        VALUES (:uuid, :matricula, :opcion, (
+            SELECT c.clase_id 
+            FROM clase c
+            JOIN horario h ON c.clase_id = h.clase_id
+            JOIN carga_academica ca ON c.clase_id = ca.clase_id
+            WHERE ca.matricula_id = :matricula
+              AND h.dia_semana = :diaNombre
+              AND time('now', 'localtime') BETWEEN h.hora_inicio AND h.hora_fin
+            LIMIT 1
+        ))
+    """)
+    suspend fun registrarAsistenciaAutomatica(uuid: String, matricula: String, opcion: String, diaNombre: String)
+
+    //  --  Asistencias de hoy  --  //
+    @Query("SELECT * FROM asistencia WHERE fecha = date('now', 'localtime')")
+    suspend fun obtenerAsistenciasDeHoy(): List<AsistenciaEntity>
 }

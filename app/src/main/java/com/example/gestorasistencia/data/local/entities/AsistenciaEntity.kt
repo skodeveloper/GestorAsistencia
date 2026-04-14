@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.UUID
-
 /**
  * Representa un registro de asistencia en la base de datos local (Room).
  * Esta entidad está diseñada específicamente para soportar el modo Offline-First.

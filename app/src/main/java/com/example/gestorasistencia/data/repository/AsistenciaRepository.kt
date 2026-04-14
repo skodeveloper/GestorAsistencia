@@ -23,7 +23,7 @@ class AsistenciaRepository(private val asistenciaDao: AsistenciaDao) {
      * Marcar asistencia como sincronizada
      */
     suspend fun marcarComoSincronizado(asistencia: AsistenciaEntity) {
-        val asistenciaActualizada = asistencia.copy(sincronizado = true)
+        val asistenciaActualizada = asistencia.copy(sincronizado = 1) //    --  Corrección True -> 1    --  //
         asistenciaDao.actualizarAsistencia(asistenciaActualizada)
     }
 }
